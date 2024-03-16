@@ -10,6 +10,7 @@ export default Card;
 const styles = StyleSheet.create({
   inputContainer: {
     alignItems: 'center',
+    // width: '100%',
     padding: 10,
     marginTop: 40,
     marginHorizontal: 24,

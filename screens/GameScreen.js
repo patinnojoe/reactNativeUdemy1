@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet, Alert } from 'react-native';
 
 import { useEffect, useState } from 'react';
-import { Card, NumberContainer, PrimaryButton, Title } from '../components';
+import { Card, InstructionText, NumberContainer, PrimaryButton, Title } from '../components';
+import { Ionicons } from '@expo/vector-icons';
 
 // import GameButton from '../components/game/GameButton';
 
@@ -48,11 +49,18 @@ const GameScreen = ({ userNumber, onGameOver }) => {
       <Card>
         <NumberContainer>{currentGuess}</NumberContainer>
 
-        <View>
-          <Text>Higher or Lower ?</Text>
-          <View style={styles.buttonContainer}>
-            <PrimaryButton onPress={() => nextGuessHandler('higher')}>+</PrimaryButton>
-            <PrimaryButton onPress={() => nextGuessHandler('lower')}>-</PrimaryButton>
+        <InstructionText style={styles.instructionText}>Higher or Lower ?</InstructionText>
+        <View style={styles.buttonOutterContainer}>
+          <View style={styles.buttonInnerContainer}>
+            <PrimaryButton onPress={() => nextGuessHandler('higher')}>
+              <Ionicons name="add" size={20}></Ionicons>
+            </PrimaryButton>
+          </View>
+
+          <View style={styles.buttonInnerContainer}>
+            <PrimaryButton onPress={() => nextGuessHandler('lower')}>
+              <Ionicons name="remove" size={20} />
+            </PrimaryButton>
           </View>
         </View>
       </Card>
@@ -63,19 +71,21 @@ const GameScreen = ({ userNumber, onGameOver }) => {
 export default GameScreen;
 
 const styles = StyleSheet.create({
-  screen: {
-    padding: 30,
+  buttonInnerContainer: {
     flex: 1,
   },
   rootContainer: {
     flex: 1,
     marginTop: 100,
-    // alignItems: 'center',
-  },
-
-  buttonContainer: {
-    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    padding: 20,
+  },
+  buttonOutterContainer: {
+    flexDirection: 'row',
+    marginVertical: 10,
+  },
+  instructionText: {
+    marginBottom: 12,
+    fontSize: 20,
   },
 });

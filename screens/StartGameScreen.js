@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 100,
     alignItems: 'center',
+    // padding: 20,
   },
 
   textInput: {
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
   },
   buttonOutterContainer: {
     flexDirection: 'row',
-    marginVertical: 10,
+    // marginVertical: 10,
   },
 
   buttonInnerContainer: {

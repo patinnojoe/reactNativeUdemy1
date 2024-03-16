@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   numberContainer: {
     borderWidth: 2,
     borderColor: Colors.secondaryColor500,
-    padding: 14,
+    padding: 20,
     borderRadius: 8,
     margin: 24,
     alignItems: 'center',
