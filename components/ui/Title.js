@@ -18,5 +18,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     borderRadius: 10,
     marginTop: 10,
+    maxWidth: '80%',
+    width: 300,
   },
 });

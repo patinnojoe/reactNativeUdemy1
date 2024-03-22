@@ -1,19 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
+import React, { useState } from 'react';
 import { ImageBackground, StyleSheet, SafeAreaView } from 'react-native';
 import { GameOverScreen, GameScreen, StartGameScreen } from './screens';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useState } from 'react';
 import { Colors } from './constants';
 
 export default function App() {
   const [userNumber, setUserNumber] = useState(null);
   const [isGameOver, setGameOver] = useState(true);
+  const [guessRound, setGuessRounds] = useState(0);
 
   // game over handler function
-  const gameOverHandler = () => {
-    return setGameOver(true);
+  const gameOverHandler = ({ numberOfRounds }) => {
+    setGuessRounds(numberOfRounds);
+    setGameOver(true);
   };
 
+  const startNewGameHandler = () => {
+    setUserNumber(null);
+    setGuessRounds(0); // Resetting the number of rounds on starting a new game
+  };
   const pickedNumberHandler = (pickedNumber) => {
     setUserNumber(pickedNumber);
     setGameOver(false);
@@ -26,7 +31,8 @@ export default function App() {
   }
 
   if (isGameOver && userNumber) {
-    screen = <GameOverScreen />;
+    screen = <GameOverScreen userNumber={userNumber} roundNumber={guessRound} onStartNewGame={startNewGameHandler} />;
+    // screen = <GameOverScreen />;
   }
 
   return (
